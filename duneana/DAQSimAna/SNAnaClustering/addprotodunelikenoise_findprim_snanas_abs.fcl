@@ -1,0 +1,18 @@
+#include "addnoise_findprim_snanas_abs.fcl"
+
+physics.producers.daq.AdcSimulator: "adcsim_noisy"
+tools.adcsim_noisy.Noise:            5
+services.PdspChannelMapService:      @local::pdspchannelmap
+services.ChannelNoiseService:        @local::protodunelikenoise
+
+#change thresholds since dealing with noisier model
+
+physics.producers.runsum1.finderCol.Threshold: 2200
+physics.producers.runsum2.finderCol.Threshold: 2400
+physics.producers.runsum3.finderCol.Threshold: 2600
+physics.producers.runsum4.finderCol.Threshold: 2800
+
+physics.producers.runsum1.finderInd.Threshold: 2800
+physics.producers.runsum2.finderInd.Threshold: 3000
+physics.producers.runsum3.finderInd.Threshold: 3200
+physics.producers.runsum4.finderInd.Threshold: 3300
